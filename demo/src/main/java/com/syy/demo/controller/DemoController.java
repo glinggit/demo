@@ -25,6 +25,8 @@ public class DemoController extends ApplicationObjectSupport {
 		String demoValue = demoService.getDemoValue();
 		System.out.println(demoValue);
 		logger.info(demoValue + new Date());
+		logger.debug(demoValue + new Date());
+		logger.error(demoValue + new Date());
 		
 		
 		return "index";
