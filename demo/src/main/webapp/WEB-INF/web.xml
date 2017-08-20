@@ -6,6 +6,15 @@
 	<!-- <context-param> <param-name>contextConfigLocation</param-name> <param-value>classpath:config/spring-servlet.xml</param-value> 
 		</context-param> -->
 
+	<!--ContextLoaderListener读取 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath*:config/springconf/db/demo-context-core.xml
+			<!-- classpath:conf/springconf/db/portal-context-service.xml, -->
+		</param-value>
+	</context-param>
+
 	<servlet>
 		<servlet-name>spring</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
