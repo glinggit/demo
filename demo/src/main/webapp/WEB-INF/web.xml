@@ -3,25 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-	<!-- <context-param> <param-name>contextConfigLocation</param-name> <param-value>classpath:config/spring-servlet.xml</param-value> 
-		</context-param> -->
-
-	<!--ContextLoaderListener读取 -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			classpath*:config/springconf/db/demo-context-core.xml
-			<!-- classpath:conf/springconf/db/portal-context-service.xml, -->
-		</param-value>
-	</context-param>
-
 	<servlet>
 		<servlet-name>spring</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-			    classpath:config/spring-servlet.xml
+			    classpath:config/application.xml
 			</param-value>
 		</init-param>
 	</servlet>
@@ -30,11 +18,6 @@
 		<servlet-name>spring</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
-	<!--设置log4j的配置文件位置 -->
-	<!-- <context-param> <param-name>log4jConfigLocation</param-name> <param-value>classpath:config/log4j.properties</param-value> 
-		</context-param> 使用监听加载log4j的配置文件 <listener> <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class> 
-		</listener> -->
 
 	<!-- 配置加载log4j.xml文件路径 -->
 	<context-param>

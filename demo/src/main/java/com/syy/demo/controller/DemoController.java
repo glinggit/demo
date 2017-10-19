@@ -25,6 +25,9 @@ public class DemoController extends ApplicationObjectSupport {
 	@Autowired
 	private IUserService userService;
 
+	
+	
+	
 
 	@RequestMapping(params = "method=index")
 	public String index(HttpServletRequest request, HttpServletResponse response) {
