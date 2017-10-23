@@ -32,6 +32,15 @@ public class JedisUtil {
         jedisPool=new JedisPool(config,JEDIS_IP,JEDIS_PORT,60000);
     }
     /**
+     * 获取Jedis实例
+     * @return
+     */
+    public static Jedis getJedis() {
+    	Jedis jedis = jedisPool.getResource();
+    	jedis.select(1);
+        return jedis;
+    }
+    /**
      * 获取数据
      * @param key
      * @return
@@ -40,7 +49,7 @@ public class JedisUtil {
         String value=null;
         Jedis jedis=null;
         try{
-            jedis=jedisPool.getResource();
+            jedis=getJedis();
             value=jedis.get(key);
         }catch (Exception e){
             jedisPool.returnBrokenResource(jedis);
@@ -65,7 +74,7 @@ public class JedisUtil {
         byte[] value = null;
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             value = jedis.get(key);
         } catch (Exception e) {
             //释放redis对象
@@ -83,7 +92,7 @@ public class JedisUtil {
 
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             jedis.set(key, value);
         } catch (Exception e) {
             //释放redis对象
@@ -99,7 +108,7 @@ public class JedisUtil {
 
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             jedis.set(key, value);
             jedis.expire(key, time);
         } catch (Exception e) {
@@ -115,7 +124,7 @@ public class JedisUtil {
     public static void hset(byte[] key, byte[] field, byte[] value) {
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             jedis.hset(key, field, value);
         } catch (Exception e) {
             //释放redis对象
@@ -130,7 +139,7 @@ public class JedisUtil {
     public static void hset(String key, String field, String value) {
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             jedis.hset(key, field, value);
         } catch (Exception e) {
             //释放redis对象
@@ -153,7 +162,7 @@ public class JedisUtil {
         String value = null;
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             value = jedis.hget(key, field);
         } catch (Exception e) {
             //释放redis对象
@@ -177,7 +186,7 @@ public class JedisUtil {
         byte[] value = null;
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             value = jedis.hget(key, field);
         } catch (Exception e) {
             //释放redis对象
@@ -194,7 +203,7 @@ public class JedisUtil {
 
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             jedis.hdel(key, field);
         } catch (Exception e) {
             //释放redis对象
@@ -214,7 +223,7 @@ public class JedisUtil {
 
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             jedis.lpush(key, value);
         } catch (Exception e) {
             //释放redis对象
@@ -236,7 +245,7 @@ public class JedisUtil {
         Jedis jedis = null;
         try {
 
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             jedis.rpush(key, value);
 
         } catch (Exception e) {
@@ -263,7 +272,7 @@ public class JedisUtil {
         Jedis jedis = null;
         try {
 
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             jedis.rpoplpush(key, destination);
 
         } catch (Exception e) {
@@ -291,7 +300,7 @@ public class JedisUtil {
         Jedis jedis = null;
         try {
 
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             list = jedis.lrange(key, 0, -1);
 
         } catch (Exception e) {
@@ -319,7 +328,7 @@ public class JedisUtil {
         Jedis jedis = null;
         try {
 
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             bytes = jedis.rpop(key);
 
         } catch (Exception e) {
@@ -339,7 +348,7 @@ public class JedisUtil {
     public static void hmset(Object key, Map hash) {
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             jedis.hmset(key.toString(), hash);
         } catch (Exception e) {
             //释放redis对象
@@ -356,7 +365,7 @@ public class JedisUtil {
         Jedis jedis = null;
         try {
 
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             jedis.hmset(key.toString(), hash);
             jedis.expire(key.toString(), time);
         } catch (Exception e) {
@@ -375,7 +384,7 @@ public class JedisUtil {
         Jedis jedis = null;
         try {
 
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             result = jedis.hmget(key.toString(), fields);
 
         } catch (Exception e) {
@@ -395,7 +404,7 @@ public class JedisUtil {
         Set result = null;
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             result = jedis.hkeys(key);
 
         } catch (Exception e) {
@@ -414,7 +423,7 @@ public class JedisUtil {
         List result = null;
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             result = jedis.lrange(key, from, to);
 
         } catch (Exception e) {
@@ -433,7 +442,7 @@ public class JedisUtil {
         Map result = null;
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             result = jedis.hgetAll(key);
         } catch (Exception e) {
             //释放redis对象
@@ -451,7 +460,7 @@ public class JedisUtil {
 
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             jedis.del(key);
         } catch (Exception e) {
             //释放redis对象
@@ -468,7 +477,7 @@ public class JedisUtil {
         long len = 0;
         Jedis jedis = null;
         try {
-            jedis = jedisPool.getResource();
+            jedis = getJedis();
             jedis.llen(key);
         } catch (Exception e) {
             //释放redis对象
