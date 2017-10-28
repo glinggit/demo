@@ -18,7 +18,7 @@ public class UserDaoImpl implements UserDao {
 
 	public User getById(Integer id) {
 
-		String sql = "SELECT * FROM user WHERE id = ?";
+		String sql = "SELECT * FROM user WHERE id = ? for update";
 
 		User user = jdbcTemplate.queryForObject(sql, new User(), new Object[] { id });
 
@@ -41,5 +41,11 @@ public class UserDaoImpl implements UserDao {
 		int result = jdbcTemplate.update(sql, paramSource);
 
 		return result;
+	}
+
+	public void update(String name) {
+		String sql = "update user set userName = " + name + " where id = 1";
+		jdbcTemplate.execute(sql);
+		
 	}
 }

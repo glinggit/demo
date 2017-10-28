@@ -13,4 +13,6 @@ public interface IUserService {
   
     // 添加UserInfo  
     Integer save(User user);
+
+	void update(int taskNum);
 }

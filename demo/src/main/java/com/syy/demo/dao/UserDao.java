@@ -10,6 +10,8 @@ public interface UserDao {
 
 	public List<User> findAll();
 
-	public Integer save(User entity); 
+	public Integer save(User entity);
+
+	public void update(String name); 
 	
 }
