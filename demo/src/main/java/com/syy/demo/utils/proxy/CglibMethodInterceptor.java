@@ -1,0 +1,15 @@
+package com.syy.demo.utils.proxy;
+
+import java.lang.reflect.Method;
+
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+
+public class CglibMethodInterceptor implements MethodInterceptor {  
+    public Object intercept(Object o, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {  
+        System.out.println("------before " + methodProxy.getSuperName() + "------");  
+        Object o1 = methodProxy.invokeSuper(o, args);  
+        System.out.println("------after " + methodProxy.getSuperName() + "------");  
+        return o1;  
+    }  
+}  
