@@ -7,6 +7,7 @@ public class Consumer extends Thread {
 	public Consumer(IStorage storage) {
 		this.storage = storage;
 	}
+	
 
 	@Override
 	public void run() {
