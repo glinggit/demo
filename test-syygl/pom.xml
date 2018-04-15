@@ -6,5 +6,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>test-syygl-dubbo</module>
+  	<module>test-syygl-mybatis</module>
   </modules>
 </project>
