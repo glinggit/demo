@@ -16,7 +16,7 @@ public class Test {
 		Test t = new Test();
 		t.setA(null);
 		
-		String a;//不初始化不可以使用
+		String a;
 		System.out.println("a=");
 		
 		String b = "aaa";
