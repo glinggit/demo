@@ -18,7 +18,7 @@ public class JedisUtil {
         //Configuration conf=Configuration.getInstance();
         JEDIS_IP="120.78.54.20";//conf.getString("jedis.ip","127.0.0.1");
         JEDIS_PORT=6379;//conf.getInt("jedis.port",6379);
-        JEDIS_PASSWORD=null;
+        JEDIS_PASSWORD="redis-syygl1";
         JedisPoolConfig config=new JedisPoolConfig();
         //config.setMaxActive(5000);
         config.setMaxIdle(256);
