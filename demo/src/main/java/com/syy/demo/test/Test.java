@@ -1,7 +1,7 @@
 package com.syy.demo.test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Test {
 	public void setA(Object o) {
@@ -13,18 +13,37 @@ public class Test {
 	}
 	
 	public static void main(String[] args) {
-		Test t = new Test();
-		t.setA(null);
+//		Test t = new Test();
+//		t.setA(null);
+//		
+//		String a;
+//		System.out.println("a=");
+//		
+//		String b = "aaa";
+//		System.out.println(b+=1);
+//		System.out.println(b+100);
+//		
+//		
+//		Map<String, String> map = new HashMap<String, String>();
 		
-		String a;
-		System.out.println("a=");
+
+		String a = "aaabbcccddd+++ww";
+		String b = a.replace("(\\w)\\1*", "$1");
+		System.out.println(b);
+
 		
-		String b = "aaa";
-		System.out.println(b+=1);
-		System.out.println(b+100);
 		
 		
-		Map<String, String> map = new HashMap<String, String>();
+		
+		String str = "111111kakkkkkkkkkkwwwaacbbdAAA";
+		String s = "";
+		Matcher m = Pattern.compile("(\\w)\\1*").matcher(str);
+		while (m.find()) {
+			s += m.group().subSequence(0, 1);
+		}
+		System.out.println(s);
+
+		
 		
 	}
 }

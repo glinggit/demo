@@ -6,7 +6,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 public class RedisUtils {
 	//Redis服务器IP
-    private static String ADDR = "127.0.0.1";
+    private static String ADDR = "120.78.54.20";
 
     //Redis的端口号
     private static int PORT = 6379;
@@ -38,7 +38,8 @@ public class RedisUtils {
             config.setMaxIdle(MAX_IDLE);
             //config.setMaxWait(MAX_WAIT);
             config.setTestOnBorrow(TEST_ON_BORROW);
-            jedisPool = new JedisPool(config, ADDR, PORT);
+            jedisPool = new JedisPool(config, ADDR, PORT,
+            		MAX_WAIT, "redis-syygl1", 0);
         } catch (Exception e) {
             e.printStackTrace();
         }
