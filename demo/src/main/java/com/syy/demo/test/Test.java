@@ -42,7 +42,8 @@ public class Test {
 		
 		HashMap<String, String> hashMap = new HashMap<String, String>();
 		int MAXIMUM_CAPACITY = 1 << 30;
-		System.out.println(MAXIMUM_CAPACITY);
+		int a = -1 << (Integer.SIZE - 3);
+		System.out.println(a);
 		
 
 //		String str = "123wabbdsafffrrrtttlkjhy";
