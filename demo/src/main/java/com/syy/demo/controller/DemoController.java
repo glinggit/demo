@@ -34,6 +34,12 @@ public class DemoController extends ApplicationObjectSupport {
 
 	@RequestMapping(params = "method=index")
 	public void index(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		User user = new User();
+		user.setUserName("syygl");
+		
+		demoService.save(user);
+		
 		String demoValue = demoService.getDemoValue();
 		System.out.println(demoValue);
 		logger.info(demoValue + new Date());

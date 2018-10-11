@@ -15,7 +15,13 @@ public class DemoService implements IDemoService{
 	public String getDemoValue() {
 		User u = userDao.getById(1);
 		System.out.println(u.getUserName());
-		return "你好呀";
+		return u.getUserName();
+	}
+
+	@Override
+	public int save(User user) {
+		int num = userDao.save(user);
+		return num;
 	}
 
 }

@@ -35,10 +35,10 @@ public class UserDaoImpl implements UserDao {
 
 	public Integer save(User entity) {
 
-		String sql = "INSERT INTO user(userName) VALUES(:userName)";
+		String sql = "INSERT INTO user(userName) VALUES(100),(200),(300)";
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		paramSource.addValue("uname", entity.getUserName());
-		int result = jdbcTemplate.update(sql, paramSource);
+		int result = jdbcTemplate.update(sql);
 
 		return result;
 	}
