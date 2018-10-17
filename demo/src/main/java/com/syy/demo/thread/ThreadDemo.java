@@ -13,7 +13,9 @@ public class ThreadDemo {
         new Thread(runnableThread).start();
 
         ThreadThread tt = new ThreadThread();
-        tt.start();
+        tt.start();//起一个线程执行
+        tt.run();//在当前线程里执行
+        
     }
 }
 

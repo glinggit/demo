@@ -40,5 +40,12 @@ public class UserService implements IUserService{
 		
 	}
 
+	@Override
+	public String getRandomNum4User(String userId) {
+		//给userId分配一个随机的红包ID
+		
+		return null;
+	}
+
 
 }

@@ -55,6 +55,8 @@ public class DemoController extends ApplicationObjectSupport {
 		List<User> listUser = userService.findAll();
 
 		System.out.println(listUser.size());
+		
+		
 
 		return "index";
 	}

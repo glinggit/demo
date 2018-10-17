@@ -15,4 +15,6 @@ public interface IUserService {
     Integer save(User user);
 
 	void update(int taskNum);
+
+	public String getRandomNum4User(String userId);
 }
